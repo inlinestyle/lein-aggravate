@@ -1,6 +1,5 @@
 (ns leiningen.aggravate
-  (:require [clojure.java.io :as io])
-  (:require [clojure.string :as string]))
+  (:require [clojure.java.io :as io]))
 
 (defn ends-with [string suffix]
   (let [index (.lastIndexOf string suffix)]
