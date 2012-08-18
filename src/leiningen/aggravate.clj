@@ -20,12 +20,13 @@
       (and (.exists file-obj) (-> file-obj .isFile not)) (throw (Exception. (str "Something weird named " filename " in the way")))
       :else (remove-file file-obj))))
 
-(defn create-file "Make a new file" [file-obj]
-  (let [parent-file (.getParentFile file-obj)]
-    (if parent-file
-      (.mkdirs parent-file)))
-  (.createNewFile file-obj)
-  file-obj) 
+(defn create-file "Make a new file" [filename]
+  (let [file-obj (io/file filename)]
+    (let [parent-file (.getParentFile file-obj)]
+      (if parent-file
+        (.mkdirs parent-file)))
+    (.createNewFile file-obj)
+    file-obj))
 
 (defn aggregate-files [inputs output]
   (with-open [wrtr (io/writer (io/file output) :append true)]
@@ -49,7 +50,7 @@
     (remove-files (options :output)))
   (doseq [options (project :aggregate-dirs)]
     (aggregate-files (get-files-in-dirs (options :input) (options :suffix)) 
-                     (create-file (io/file (options :output)))))
+                     (create-file (options :output))))
   (doseq [options (project :aggregate-files)]
     (aggregate-files (map io/file (options :input)) 
-                     (create-file (io/file (options :output))))))
+                     (create-file (options :output)))))
