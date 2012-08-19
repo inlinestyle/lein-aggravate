@@ -6,7 +6,8 @@ Good for your `.css` files (reduce page load time by cutting down on asset loadi
 
 Possibly good for your `.js` files (good use cases are compiled `.coffee` files and natural `.js` files).
 
-For now, the only available compressor is [YuiCompressor](https://github.com/yui/yuicompressor/), and only for `css`.
+For now, the only available compressor is [YuiCompressor](https://github.com/yui/yuicompressor/), and only for `css` (there's some crazy rhino version
+dependency issue with `js` parsing).
 
 ## Usage
 
@@ -31,11 +32,26 @@ There are two optional fields that you can add to your `project.clj`, `aggregate
                   :suffix "css"
                   :compressor "yui"}]
 ```
+* In both cases, the only required settings are `:input` and `:output`. 
+* :aggregate-dirs recursively fetches all files in or below the specified directory (uses `file-seq`)
+* The `:suffix` option for `:aggregate-dirs` maps will filter the files it finds.
+* Currently the only available option for `:compressor` is `"yui"`, and note that this should only be used on `css` files.
+
 
 You can run this in your project with:
 ```
 $ lein aggravate
 ```
+
+##TODOS
+
+1. Implement Leiningen hook usage.
+
+2. Add a compressor for `js`
+
+3. Learn to write better clojure
+
+4. Learn to write better READMEs
 
 ## License
 
