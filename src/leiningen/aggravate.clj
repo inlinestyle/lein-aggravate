@@ -13,9 +13,9 @@
                         (fh/create-file (options :output))))
   (doseq [options (filter #(% :compressor) (mapcat project [:aggregate-files :aggregate-dirs]))]
     (cond
-      (= (options :compressor) ch/YUI) (-> options 
-                                      :output 
-                                      fh/get-absolute-path 
-                                      ch/compress-with-yui))))
+      (= (options :compressor) ch/YUI) (-> options
+                                         :output
+                                         fh/get-absolute-path
+                                         ch/compress-with-yui))))
 
 
