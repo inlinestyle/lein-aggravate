@@ -1,10 +1,6 @@
 (ns leiningen.aggravate
-  (:require [leiningen.file-helpers :as fh]))
-
-(def YUI "yui")
-
-(defn compress-with-yui [filename]
-  (com.yahoo.platform.yui.compressor.YUICompressor/main (into-array String ["--type" "css" "-o" filename filename])))
+  (:require [leiningen.file-helpers :as fh])
+  (:require [leiningen.compressor-helpers :as ch]))
 
 (defn aggravate "Aggregate your files!" [project & args]
   (doseq [options (mapcat project [:aggregate-files :aggregate-dirs])]
@@ -17,9 +13,9 @@
                         (fh/create-file (options :output))))
   (doseq [options (filter #(% :compressor) (mapcat project [:aggregate-files :aggregate-dirs]))]
     (cond
-      (= (options :compressor) YUI) (-> options 
+      (= (options :compressor) ch/YUI) (-> options 
                                       :output 
                                       fh/get-absolute-path 
-                                      compress-with-yui))))
+                                      ch/compress-with-yui))))
 
 
