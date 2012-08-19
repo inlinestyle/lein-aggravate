@@ -33,7 +33,7 @@ There are two optional fields that you can add to your `project.clj`, `aggregate
                   :compressor "yui"}]
 ```
 * In both cases, the only required settings are `:input` and `:output`. 
-* :aggregate-dirs recursively fetches all files in or below the specified directory (uses `file-seq`)
+* `:aggregate-dirs` recursively fetches all files in or below the specified directory (uses `file-seq`)
 * The `:suffix` option for `:aggregate-dirs` maps will filter the files it finds.
 * Currently the only available option for `:compressor` is `"yui"`, and note that this should only be used on `css` files.
 
