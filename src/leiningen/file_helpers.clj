@@ -32,6 +32,9 @@
     name-or-obj
     (io/file name-or-obj)))
 
+(defn get-absolute-path [name-or-obj]
+  (.getAbsolutePath (ensure-file-obj name-or-obj)))
+
 (defn aggregate-files [inputs output]
   (with-open [wrtr (io/writer (ensure-file-obj output) :append true)]
     (doseq [input inputs]
@@ -40,7 +43,7 @@
           (doseq [line (line-seq rdr)]
             (.write wrtr (str line "\n"))))
         (catch java.io.FileNotFoundException e
-          (prn (str "Couldn't find file " (.getAbsolutePath (ensure-file-obj input)) " continuing...")))))))
+          (prn (str "Couldn't find file " (get-absolute-path input) " continuing...")))))))
 
 (defn get-files-in-dirs [dirnames & [suffix]]
   (set (flatten (for [dirname dirnames]
