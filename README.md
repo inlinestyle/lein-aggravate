@@ -1,10 +1,12 @@
 # lein-aggravate
 
-
 A Leiningen plugin for concatenating and compressing files. 
+
 Good for your `.css` files (reduce page load time by cutting down on asset loading calls).
-Possibly good for your `.js` files (good use cases are compiled `.coffee` files and natural `.js` files)
-For now, the only available compressor is the [YuiCompressor](https://github.com/yui/yuicompressor/), and only for `css`.
+
+Possibly good for your `.js` files (good use cases are compiled `.coffee` files and natural `.js` files).
+
+For now, the only available compressor is [YuiCompressor](https://github.com/yui/yuicompressor/), and only for `css`.
 
 ## Usage
 
@@ -18,8 +20,7 @@ Put `[lein-aggravate "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `proj
 
 There are two optional fields that you can add to your `project.clj`, `aggregate-files` and `aggregate-dirs`:
 
-```
-
+```clojure
 :aggregate-files [{:input ["foo/bar.css" "foo/baz.css"]
                    :output "foo/compiled-files/main.css"
                    :compressor "yui"}
