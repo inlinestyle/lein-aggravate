@@ -6,8 +6,7 @@ Good for your `.css` files (reduce page load time by cutting down on asset loadi
 
 Possibly good for your `.js` files (good use cases are compiled `.coffee` files and natural `.js` files).
 
-For now, the only available compressor is [YuiCompressor](https://github.com/yui/yuicompressor/), and only for `css` (there's some crazy rhino version
-dependency issue with `js` parsing).
+This plugin will concatenate anything, but for now the only available compressor is [YuiCompressor](https://github.com/yui/yuicompressor/), and only for `css` (there's some crazy rhino version dependency issue with `js` parsing).
 
 ## Usage
 
