@@ -40,7 +40,7 @@
           (doseq [line (line-seq rdr)]
             (.write wrtr (str line "\n"))))
         (catch java.io.FileNotFoundException e
-          (prn (str "Couldn't find file " (.getName input) " continuing...")))))))
+          (prn (str "Couldn't find file " (.getAbsolutePath (ensure-file-obj input)) " continuing...")))))))
 
 (defn get-files-in-dirs [dirnames & [suffix]]
   (set (flatten (for [dirname dirnames]
