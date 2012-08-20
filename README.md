@@ -46,14 +46,16 @@ $ lein aggravate
 
 1. Implement Leiningen hook usage.
 
-2. Add a compressor for `js`
+2. Unit tests
 
-3. Learn to write better clojure
+3. Add a compressor for `js`
 
-4. Learn to write better READMEs
+4. Learn to write better clojure
+
+5. Learn to write better READMEs
 
 ## License
 
-Copyright © 2012 FIXME
+Copyright © 2012 Ben Yelsey
 
 Distributed under the Eclipse Public License, the same as Clojure.
