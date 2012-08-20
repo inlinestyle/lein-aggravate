@@ -10,13 +10,16 @@ This plugin will concatenate anything, but for now the only available compressor
 
 ## Usage
 
-To get this at the user level, just follow the usual Leiningen instructions:
-For Leiningen 2: Put `[lein-aggravate "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `:user` profile.
-For Leiningen 1: Do `lein plugin install lein-aggravate 0.1.0-SNAPSHOT`.
+### Adding to your project
 
-For your individual project:
-Put `[lein-aggravate "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `project.clj`.
+1. To get this at the user level, just follow the usual Leiningen instructions:
+    * For Leiningen 2: Put `[lein-aggravate "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `:user` profile.
+    * For Leiningen 1: Do `lein plugin install lein-aggravate 0.1.0-SNAPSHOT`.
 
+2. For your individual project:
+    * Put `[lein-aggravate "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `project.clj`.
+
+### Configuring
 
 There are two optional fields that you can add to your `project.clj`, `aggravate-files` and `aggravate-dirs`.
 The following is a somewhat contrived usage example:
@@ -37,6 +40,7 @@ The following is a somewhat contrived usage example:
 * The `:suffix` option for `:aggravate-dirs` maps will filter the files it finds.
 * Currently the only available option for `:compressor` is `"yui"`, and note that this should only be used on `css` files.
 
+### Running
 
 You can run `aggravate` in your project with:
 ```
