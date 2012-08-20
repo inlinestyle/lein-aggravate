@@ -37,22 +37,25 @@ There are two optional fields that you can add to your `project.clj`, `aggregate
 * Currently the only available option for `:compressor` is `"yui"`, and note that this should only be used on `css` files.
 
 
-You can run this in your project with:
+You can run `aggravate` in your project with:
 ```
 $ lein aggravate
 ```
 
+You can also have `aggravate` run after the rest of your Leiningen project compiles by adding the following to your `project.clj`:
+```clojure
+:hooks [leiningen.aggravate]
+```
+
 ##TODOS
 
-1. Implement Leiningen hook usage.
+1. Unit tests
 
-2. Unit tests
+2. Add a compressor for `js`
 
-3. Add a compressor for `js`
+3. Learn to write better clojure
 
-4. Learn to write better clojure
-
-5. Learn to write better READMEs
+4. Learn to write better READMEs
 
 ## License
 
