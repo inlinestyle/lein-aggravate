@@ -3,5 +3,5 @@
 (def YUI "yui")
 
 (defn compress-with-yui [filename]
-  (com.yahoo.platform.yui.compressor.YUICompressor/main (into-array String ["--type" "css" "-o" filename filename])))
+  (com.yahoo.platform.yui.compressor.YUICompressor/main (into-array ["--type" "css" "-o" filename filename])))
 
