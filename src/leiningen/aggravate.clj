@@ -4,7 +4,7 @@
             [leiningen.compile :as lcompile]
             [robert.hooke :as hooke]))
 
-(defn aggravate "Aggregate your files!" [project & args]
+(defn aggravate "Concat/Compress your files!" [project & args]
   (doseq [options (mapcat project [:aggregate-files :aggregate-dirs])]
     (fhelpers/remove-files (options :output)))
   (doseq [options (project :aggregate-dirs)]
@@ -20,4 +20,8 @@
                                          fhelpers/get-absolute-path
                                          chelpers/compress-with-yui))))
 
+(defn compile-hook [task & args]
+  (apply task args)
+  (apply aggravate args))
 
+(hooke/add-hook #'leiningen.compile/compile #'compile-hook)
