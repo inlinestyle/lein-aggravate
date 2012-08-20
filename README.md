@@ -18,7 +18,8 @@ For your individual project:
 Put `[lein-aggravate "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `project.clj`.
 
 
-There are two optional fields that you can add to your `project.clj`, `aggregate-files` and `aggregate-dirs`:
+There are two optional fields that you can add to your `project.clj`, `aggregate-files` and `aggregate-dirs`.
+The following is a somewhat contrived usage example:
 
 ```clojure
 :aggregate-files [{:input ["foo/bar.css" "foo/baz.css"]
