@@ -5,15 +5,15 @@
             [robert.hooke :as hooke]))
 
 (defn aggravate "Concat/Compress your files!" [project & args]
-  (doseq [options (mapcat project [:aggregate-files :aggregate-dirs])]
+  (doseq [options (mapcat project [:aggravate-files :aggravate-dirs])]
     (fhelpers/remove-files (options :output)))
-  (doseq [options (project :aggregate-dirs)]
+  (doseq [options (project :aggravate-dirs)]
     (fhelpers/aggregate-files (fhelpers/get-files-in-dirs (options :input) (options :suffix)) 
                         (fhelpers/create-file (options :output))))
-  (doseq [options (project :aggregate-files)]
+  (doseq [options (project :aggravate-files)]
     (fhelpers/aggregate-files (options :input)
                         (fhelpers/create-file (options :output))))
-  (doseq [options (filter #(% :compressor) (mapcat project [:aggregate-files :aggregate-dirs]))]
+  (doseq [options (filter #(% :compressor) (mapcat project [:aggravate-files :aggravate-dirs]))]
     (cond
       (= (options :compressor) chelpers/YUI) (-> options
                                          :output

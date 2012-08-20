@@ -18,23 +18,23 @@ For your individual project:
 Put `[lein-aggravate "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `project.clj`.
 
 
-There are two optional fields that you can add to your `project.clj`, `aggregate-files` and `aggregate-dirs`.
+There are two optional fields that you can add to your `project.clj`, `aggravate-files` and `aggravate-dirs`.
 The following is a somewhat contrived usage example:
 
 ```clojure
-:aggregate-files [{:input ["foo/bar.css" "foo/baz.css"]
+:aggravate-files [{:input ["foo/bar.css" "foo/baz.css"]
                    :output "foo/compiled-files/main.css"
                    :compressor "yui"}
                   {:input ["messed/up.css" "messed/up/more.css"]
                    :output "foo/compiled-files/messed.css"}]
-:aggregate-dirs [{:input ["foo"]
+:aggravate-dirs [{:input ["foo"]
                   :output "foo/compiled-dirs/main.css"
                   :suffix "css"
                   :compressor "yui"}]
 ```
 * In both cases, the only required settings are `:input` and `:output`. 
-* `:aggregate-dirs` recursively fetches all files in or below the specified directory (uses `file-seq`)
-* The `:suffix` option for `:aggregate-dirs` maps will filter the files it finds.
+* `:aggravate-dirs` recursively fetches all files in or below the specified directory (uses `file-seq`)
+* The `:suffix` option for `:aggravate-dirs` maps will filter the files it finds.
 * Currently the only available option for `:compressor` is `"yui"`, and note that this should only be used on `css` files.
 
 
