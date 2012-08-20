@@ -1,21 +1,23 @@
 (ns leiningen.aggravate
-  (:require [leiningen.file-helpers :as fh])
-  (:require [leiningen.compressor-helpers :as ch]))
+  (:require [leiningen.file-helpers :as fhelpers]
+            [leiningen.compressor-helpers :as chelpers]
+            [leiningen.compile :as lcompile]
+            [robert.hooke :as hooke]))
 
 (defn aggravate "Aggregate your files!" [project & args]
   (doseq [options (mapcat project [:aggregate-files :aggregate-dirs])]
-    (fh/remove-files (options :output)))
+    (fhelpers/remove-files (options :output)))
   (doseq [options (project :aggregate-dirs)]
-    (fh/aggregate-files (fh/get-files-in-dirs (options :input) (options :suffix)) 
-                        (fh/create-file (options :output))))
+    (fhelpers/aggregate-files (fhelpers/get-files-in-dirs (options :input) (options :suffix)) 
+                        (fhelpers/create-file (options :output))))
   (doseq [options (project :aggregate-files)]
-    (fh/aggregate-files (options :input)
-                        (fh/create-file (options :output))))
+    (fhelpers/aggregate-files (options :input)
+                        (fhelpers/create-file (options :output))))
   (doseq [options (filter #(% :compressor) (mapcat project [:aggregate-files :aggregate-dirs]))]
     (cond
-      (= (options :compressor) ch/YUI) (-> options
+      (= (options :compressor) chelpers/YUI) (-> options
                                          :output
-                                         fh/get-absolute-path
-                                         ch/compress-with-yui))))
+                                         fhelpers/get-absolute-path
+                                         chelpers/compress-with-yui))))
 
 
