@@ -1,5 +1,7 @@
 # lein-aggravate
 
+[![Clojars Project](http://clojars.org/lein-aggravate/latest-version.svg)](http://clojars.org/lein-aggravate)
+
 A Leiningen plugin for concatenating and compressing files. 
 
 Good for your `.css` files (reduce page load time by cutting down on asset loading calls).
@@ -56,11 +58,13 @@ You can also have `aggravate` run after the rest of your Leiningen project compi
 
 1. Unit tests
 
-2. Add a compressor for `js`
+2. Some form of CI (Travis?)
 
-3. Learn to write better clojure
+3. Add a compressor for `js`
 
-4. Learn to write better READMEs
+4. Learn to write better clojure
+
+5. Learn to write better READMEs
 
 ## License
 
