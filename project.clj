@@ -1,4 +1,4 @@
-(defproject lein-aggravate "0.1.0-SNAPSHOT"
+(defproject lein-aggravate "0.1.1-SNAPSHOT"
   :description "Concatenate your files! Compress css files with YuiCompressor!"
   :url "https://github.com/byels/lein-aggravate"
   :license {:name "Eclipse Public License"
