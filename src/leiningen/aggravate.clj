@@ -24,4 +24,7 @@
   (apply task args)
   (apply aggravate args))
 
-(hooke/add-hook #'leiningen.compile/compile #'compile-hook)
+(defn activate []
+  (hooke/add-hook #'leiningen.compile/compile #'compile-hook))
+
+(activate)
